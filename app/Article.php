@@ -3,28 +3,11 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-use Elasticquent\ElasticquentTrait;
+use App\Search\Searchable;
 
 class Article extends Model
 {
-    use ElasticquentTrait;
-
-    protected $fillable = ['title', 'body', 'tags'];
-
-    protected $mappingProperties = array(
-        'title' => [
-            'type' => 'text',
-            "analyzer" => "standard",
-        ],
-        'body' => [
-            'type' => 'text',
-            "analyzer" => "standard",
-        ],
-        'tags' => [
-            'type' => 'text',
-            "analyzer" => "standard",
-        ],
-    );
+    use Searchable;
 
     protected $casts = [
         'tags' => 'json',

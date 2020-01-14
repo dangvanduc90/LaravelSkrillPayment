@@ -92,13 +92,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/search', function() {
-
-    $articles = Article::searchByQuery(['match' => ['title' => 'Sed']]);
-
-    return $articles;
-});
-
 Route::get('/search', function (ArticlesRepository $repository) {
     $articles = $repository->search((string) request('q'));
 
@@ -106,10 +99,6 @@ Route::get('/search', function (ArticlesRepository $repository) {
         'articles' => $articles,
     ]);
 });
-
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
 
 Auth::routes();
 
