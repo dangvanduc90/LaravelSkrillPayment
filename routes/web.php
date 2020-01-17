@@ -17,11 +17,11 @@ use Monolog\Logger;
 use App\Articles\ArticlesRepository;
 
 Route::get('/', function () {
-    $logger = new Logger('elasticquent_log');
-    $logger->pushHandler(new StreamHandler(storage_path('logs/elasticquent_log.log'), Logger::WARNING));
-    $client = Elasticsearch\ClientBuilder::create()
-    ->setLogger($logger)
-    ->build();
+    // $logger = new Logger('elasticquent_log');
+    // $logger->pushHandler(new StreamHandler(storage_path('logs/elasticquent_log.log'), Logger::WARNING));
+    // $client = Elasticsearch\ClientBuilder::create()
+    // ->setLogger($logger)
+    // ->build();
 
     // #_index_a_document
     // $params = [
@@ -33,19 +33,19 @@ Route::get('/', function () {
     // $response = $client->index($params);
     // dd($response);
 
-    # _get_a_document
-    $params = [
-        'type' => config('elasticquent.default_index'),
-        'index' => 'my_index',
-        'id'    => 'my_id11',
-        'client' => [
-            'ignore' => [404],
-            'timeout' => 10,        // ten second timeout
-            // 'verbose' => true,
-        ],
-    ];
-    $response = $client->get($params);
-    dd($response);
+    // # _get_a_document
+    // $params = [
+    //     'type' => config('elasticquent.default_index'),
+    //     'index' => 'my_index',
+    //     'id'    => 'my_id11',
+    //     'client' => [
+    //         'ignore' => [404],
+    //         'timeout' => 10,        // ten second timeout
+    //         // 'verbose' => true,
+    //     ],
+    // ];
+    // $response = $client->get($params);
+    // dd($response);
 
     // #_search_for_a_document
     // $params = [
